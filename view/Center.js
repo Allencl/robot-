@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
   headContainer:{
     flexDirection:'column',
     // justifyContent:'center',
-    backgroundColor:"#13c2c2",    
+    backgroundColor:"#1890ff",    
     height:350,
     paddingTop:39  
   },

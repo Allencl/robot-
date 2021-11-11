@@ -15,6 +15,18 @@ import WISHttpUtils from '@wis_component/http';   // http
 import HomeScreen from './view/Home';    // 主页
 import LoginScreen from './view/Login';   // 登录
 
+
+import onlineScreen from './view_page/online/index';     // 上料
+
+
+
+
+
+
+
+
+
+
 import taskScreen from './view/task/index';   // 待办任务
 import procurementOrderScreen from './view/procurementOrder/index';   // 采购订单
 import procurementIssueScreen from './view/procurementOrder/details';   // 采购订单 详情
@@ -100,7 +112,7 @@ class App extends Component {
     // 公共头部
     let headOption={
       headerStyle: {
-        backgroundColor: '#13c2c2',
+        backgroundColor:'#1890ff',
         borderWidth:0
       },
       headerTintColor: '#fff',
@@ -199,6 +211,30 @@ class App extends Component {
                 </Tab.Navigator>
               )}
             </Stack.Screen> 
+
+            <Stack.Screen name="online" options={{title:'上料',...headOption}}>
+              {(TabProps) => (
+                <Tab.Navigator tabBar={() => <BarBottom TabProps={TabProps} /> }>
+                  <Tab.Screen initialParams={{routeParams: TabProps.route.params}} name="online" component={onlineScreen} />
+                </Tab.Navigator>
+              )}            
+            </Stack.Screen>
+
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
             <Stack.Screen name="task" options={{title:'待办任务',...headOption}}>

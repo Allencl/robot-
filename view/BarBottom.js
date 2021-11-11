@@ -72,7 +72,7 @@ class BarBottomPage extends React.Component {
                 DeviceEventEmitter.emit('globalEmitter_updata_home');
             }}>
                 <View style={styles.menu_child}>
-                    <Icon style={styles.menu_child_icon} name="home" size="lg" color="#009966" />
+                    <Icon style={styles.menu_child_icon} name="home" size="lg" color="#1890ff" />
                 </View>    
             </TouchableOpacity>
             <View style={styles.menu_child}>

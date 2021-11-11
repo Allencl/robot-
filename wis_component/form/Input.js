@@ -17,7 +17,6 @@ class InputComponent extends Component{
                 onChangeText={(val)=>{
                     if(onChangeValue) onChangeValue(val);
                 }}                
-                
             >
                 {lableName}
             </InputItem>

@@ -186,184 +186,21 @@ class HomeScreen extends Component{
 
 
             <WingBlank size="md" style={styles.wingBlank}>
-            <Card style={styles.card}>
-                <Card.Header
-                    title="待办"
-                    thumb={<Icon name="bell" size="md" color="#ff9933" style={{marginRight:6}} />}
-                />
-                <Card.Body>
-                    { isFinancing ?
+
+                <Card style={styles.card}>
+                    <Card.Header
+                        title="生产执行"
+                        thumb={<Icon name="audit" size="md" color="#009966" style={{marginRight:6}} />}
+                    />
+                    <Card.Body>
                         <View style={styles.cardContent}>
                             <View style={styles.flexBox}>
                                 <View style={styles.flexBoxCol}>
                                     <View style={styles.flexBoxColChild}>
-                                        <TouchableOpacity onPress={() => this.authority('waitCloseCheck') }>
-                                            <View style={styles.menu_child}>
-                                                <Text style={{...styles.menu_child_icon,color:"#00FFFF"}}>{numberConfig["financialAudit"]}</Text>
-                                                <Text style={styles.menu_child_icon_text}>待审核结算单</Text>
-                                            </View>
-                                        </TouchableOpacity>
-                                    </View>
-                                </View> 
-                                <View style={styles.flexBoxCol}></View>
-                                <View style={styles.flexBoxCol}></View>
-                            </View> 
-                        </View>
-                        : 
-                        <View style={styles.cardContent}>
-                            <View style={styles.flexBox}>
-                                <View style={styles.flexBoxCol}>
-                                    <View style={styles.flexBoxColChild}>
-                                        <TouchableOpacity onPress={() => this.authority('procurementPlanPending') }>
-                                            <View style={styles.menu_child}>
-                                                <Text style={{...styles.menu_child_icon,color:"#00FFFF"}}>{numberConfig["planStatusCount"]}</Text>
-                                                <Text style={styles.menu_child_icon_text}>{`${isProcurement?"待下发":"待确认"}计划`}</Text>
-                                            </View>
-                                        </TouchableOpacity>
-                                    </View>
-                                </View>
-                                <View style={styles.flexBoxCol}>
-                                    <View style={styles.flexBoxColChild}>
-                                        <TouchableOpacity onPress={() => this.authority('procurementOrderPending') }>
-                                            <View style={styles.menu_child}>
-                                                <Text style={{...styles.menu_child_icon,color:"#339999"}}>{numberConfig["orderStatusCount"]}</Text>
-                                                <Text style={styles.menu_child_icon_text}>{`${isProcurement?"待下发":"待确认"}订单`}</Text>
-                                            </View>
-                                        </TouchableOpacity>  
-                                    </View>
-                                </View>
-                                <View style={styles.flexBoxCol}>
-                                    <View style={styles.flexBoxColChild}>
-                                        <TouchableOpacity onPress={() => this.authority('voucher') }>
-                                            <View style={styles.menu_child}>
-                                                <Text style={{...styles.menu_child_icon,color:"#FFCC00"}}>{numberConfig["agentCount"]}</Text>
-                                                <Text style={styles.menu_child_icon_text}>待办单据</Text>
-                                            </View>
-                                        </TouchableOpacity>   
-                                    </View>
-                                </View>
-                            </View>
-                            <View style={styles.flexBox}>
-                                <View style={styles.flexBoxCol}>
-                                    <View style={styles.flexBoxColChild}>
-                                        <TouchableOpacity onPress={() => this.authority('procurementPlanWeek') }>
-                                            <View style={styles.menu_child}>
-                                                <Text style={{...styles.menu_child_icon,color:"#006699"}}>{numberConfig["planWeekCount"]}</Text>
-                                                <Text style={styles.menu_child_icon_text}>本周计划</Text>
-                                            </View>
-                                        </TouchableOpacity>
-                                    </View>
-                                </View>
-                                <View style={styles.flexBoxCol}>
-                                    <View style={styles.flexBoxColChild}>
-                                        <TouchableOpacity onPress={() => this.authority('procurementOrderWeek') }>
-                                            <View style={styles.menu_child}>
-                                                <Text style={styles.menu_child_icon}>{numberConfig["orderWeekCount"]}</Text>
-                                                <Text style={styles.menu_child_icon_text}>本周订单</Text>
-                                            </View>
-                                        </TouchableOpacity>
-                                    </View>
-                                </View>
-                                <View style={styles.flexBoxCol}>
-                                    <View style={styles.flexBoxColChild}>
-                                        <TouchableOpacity onPress={() => this.authority('deferred') }>
-                                            <View style={styles.menu_child}>
-                                                <Text style={{...styles.menu_child_icon,color:"#330066"}}>{numberConfig["extensionAllCount"]}</Text>
-                                                <Text style={styles.menu_child_icon_text}>交货延期订单</Text>
-                                            </View>
-                                        </TouchableOpacity> 
-                                    </View>
-                                </View>
-                            </View>
-                            <View style={styles.flexBox}>
-                                <View style={styles.flexBoxCol}>
-                                    <View style={styles.flexBoxColChild}>
-                                        <TouchableOpacity onPress={() => this.authority('procurementPlanMonth') }>
-                                            <View style={styles.menu_child}>
-                                                <Text style={{...styles.menu_child_icon,color:"#006600"}}>{numberConfig["planMonthCount"]}</Text>
-                                                <Text style={styles.menu_child_icon_text}>本月计划</Text>
-                                            </View>
-                                        </TouchableOpacity>
-                                    </View>
-                                </View>
-                                <View style={styles.flexBoxCol}>
-                                    <View style={styles.flexBoxColChild}>
-                                        <TouchableOpacity onPress={() => this.authority('procurementOrderMonth') }>
-                                            <View style={styles.menu_child}>
-                                                <Text style={{...styles.menu_child_icon,color:"#00CCFF"}}>{numberConfig["orderMonthCount"]}</Text>
-                                                <Text style={styles.menu_child_icon_text}>本月订单</Text>
-                                            </View>
-                                        </TouchableOpacity> 
-                                    </View>
-                                </View>
-
-                                { isProcurement ?
-                                    <View style={styles.flexBoxCol}>
-                                        <View style={styles.flexBoxColChild}>
-                                            <TouchableOpacity onPress={() => this.authority('takeDelivery') }>
-                                                <View style={styles.menu_child}>
-                                                    <Text style={{...styles.menu_child_icon,color:"#660000"}}>{numberConfig["receivedCount"]||0}</Text>
-                                                    <Text style={styles.menu_child_icon_text}>待收货订单</Text>
-                                                </View>
-                                            </TouchableOpacity> 
-                                        </View>
-                                    </View>       
-                                    :
-                                    <View style={styles.flexBoxCol}></View>
-                                }
-
-                            </View>                        
-                            <View style={styles.flexBox}>
-                                { isProcurement ?
-                                    <View style={styles.flexBoxCol}>
-                                        <View style={styles.flexBoxColChild}>
-                                            <TouchableOpacity onPress={() => this.authority('waitClose') }>
-                                                <View style={styles.menu_child}>
-                                                    <Text style={{...styles.menu_child_icon,color:"#006699"}}>{numberConfig["billSourceDraft"]}</Text>
-                                                    <Text style={styles.menu_child_icon_text}>待下发结算源</Text>
-                                                </View>
-                                            </TouchableOpacity>
-                                        </View>
-                                    </View>                            
-                                    :
-                                    <View style={styles.flexBoxCol}></View>
-                                }
-                                { isProcurement ?
-                                    <View style={styles.flexBoxCol}>
-                                        <View style={styles.flexBoxColChild}>
-                                            <TouchableOpacity onPress={() => this.authority('waitCloseCheck') }>
-                                                <View style={styles.menu_child}>
-                                                    <Text style={styles.menu_child_icon}>{numberConfig["billAuditDraft"]}</Text>
-                                                    <Text style={styles.menu_child_icon_text}>待审核结算单</Text>
-                                                </View>
-                                            </TouchableOpacity>
-                                        </View>
-                                    </View>                            
-                                    :
-                                    <View style={styles.flexBoxCol}></View>
-                                }                            
-                                <View style={styles.flexBoxCol}></View>
-                            </View>                    
-                        </View>   
-                    }
-                </Card.Body>
-            </Card>
-
-            <Card style={styles.card}>
-                <Card.Header
-                title="常用"
-                thumb={<Icon name="audit" size="md" color="#009966" style={{marginRight:6}} />}
-                />
-                <Card.Body>
-                    <View style={styles.cardContent}>
-                        { isFinancing ?
-                            <View style={styles.flexBox}>
-                                <View style={styles.flexBoxCol}>
-                                    <View style={styles.flexBoxColChild}>
-                                        <TouchableOpacity onPress={() => this.authority('settleAccounts') }>
+                                        <TouchableOpacity onPress={() => this.authority('online') }>
                                             <View style={styles.menu_child}>
                                                 <Icon style={styles.menu_child_icon} name="calculator" size="lg" color="#660000" />
-                                                <Text style={styles.menu_child_text}>结算单</Text>
+                                                <Text style={styles.menu_child_text}>上料</Text>
                                             </View>
                                         </TouchableOpacity>
                                     </View>
@@ -372,41 +209,184 @@ class HomeScreen extends Component{
                                 <View style={styles.flexBoxCol}></View> 
                                 <View style={styles.flexBoxCol}></View>                          
                             </View>
-                            :
-                            <View style={styles.flexBox}>
-                                <View style={styles.flexBoxCol}>
-                                    <View style={styles.flexBoxColChild}>
-                                        <TouchableOpacity onPress={() => this.authority('procurementPlan') }>
-                                            <View style={styles.menu_child}>
-                                                <Icon style={styles.menu_child_icon} name="flag" size="lg" color="#ff9933" />
-                                                <Text style={styles.menu_child_text}>采购计划</Text>
-                                            </View>
-                                        </TouchableOpacity>
-                                    </View>
-                                </View>
-                                <View style={styles.flexBoxCol}>
-                                    <View style={styles.flexBoxColChild}>
-                                        <TouchableOpacity onPress={() => this.authority('procurementOrder') }>
-                                            <View style={styles.menu_child}>
-                                                <Icon style={styles.menu_child_icon} name="file-done" size="lg" color="#009966" />
-                                                <Text style={styles.menu_child_text}>采购订单</Text>
-                                            </View>
-                                        </TouchableOpacity>
-                                    </View>
-                                </View>
+                        </View>         
+                    </Card.Body>
+                </Card>
 
-                                { isProcurement ?
+
+
+                <Card style={styles.card}>
+                    <Card.Header
+                        title="待办"
+                        thumb={<Icon name="bell" size="md" color="#ff9933" style={{marginRight:6}} />}
+                    />
+                    <Card.Body>
+                        { isFinancing ?
+                            <View style={styles.cardContent}>
+                                <View style={styles.flexBox}>
                                     <View style={styles.flexBoxCol}>
                                         <View style={styles.flexBoxColChild}>
-                                            <TouchableOpacity onPress={() => this.authority('salesReturn') }>
+                                            <TouchableOpacity onPress={() => this.authority('waitCloseCheck') }>
                                                 <View style={styles.menu_child}>
-                                                    <Icon style={styles.menu_child_icon} name="export" size="lg" color="#00CCFF" />
-                                                    <Text style={styles.menu_child_text}>收货</Text>
+                                                    <Text style={{...styles.menu_child_icon,color:"#00FFFF"}}>{numberConfig["financialAudit"]}</Text>
+                                                    <Text style={styles.menu_child_icon_text}>待审核结算单</Text>
+                                                </View>
+                                            </TouchableOpacity>
+                                        </View>
+                                    </View> 
+                                    <View style={styles.flexBoxCol}></View>
+                                    <View style={styles.flexBoxCol}></View>
+                                </View> 
+                            </View>
+                            : 
+                            <View style={styles.cardContent}>
+                                <View style={styles.flexBox}>
+                                    <View style={styles.flexBoxCol}>
+                                        <View style={styles.flexBoxColChild}>
+                                            <TouchableOpacity onPress={() => this.authority('procurementPlanPending') }>
+                                                <View style={styles.menu_child}>
+                                                    <Text style={{...styles.menu_child_icon,color:"#00FFFF"}}>{numberConfig["planStatusCount"]}</Text>
+                                                    <Text style={styles.menu_child_icon_text}>{`${isProcurement?"待下发":"待确认"}计划`}</Text>
+                                                </View>
+                                            </TouchableOpacity>
+                                        </View>
+                                    </View>
+                                    <View style={styles.flexBoxCol}>
+                                        <View style={styles.flexBoxColChild}>
+                                            <TouchableOpacity onPress={() => this.authority('procurementOrderPending') }>
+                                                <View style={styles.menu_child}>
+                                                    <Text style={{...styles.menu_child_icon,color:"#339999"}}>{numberConfig["orderStatusCount"]}</Text>
+                                                    <Text style={styles.menu_child_icon_text}>{`${isProcurement?"待下发":"待确认"}订单`}</Text>
                                                 </View>
                                             </TouchableOpacity>  
                                         </View>
                                     </View>
-                                    :
+                                    <View style={styles.flexBoxCol}>
+                                        <View style={styles.flexBoxColChild}>
+                                            <TouchableOpacity onPress={() => this.authority('voucher') }>
+                                                <View style={styles.menu_child}>
+                                                    <Text style={{...styles.menu_child_icon,color:"#FFCC00"}}>{numberConfig["agentCount"]}</Text>
+                                                    <Text style={styles.menu_child_icon_text}>待办单据</Text>
+                                                </View>
+                                            </TouchableOpacity>   
+                                        </View>
+                                    </View>
+                                </View>
+                                <View style={styles.flexBox}>
+                                    <View style={styles.flexBoxCol}>
+                                        <View style={styles.flexBoxColChild}>
+                                            <TouchableOpacity onPress={() => this.authority('procurementPlanWeek') }>
+                                                <View style={styles.menu_child}>
+                                                    <Text style={{...styles.menu_child_icon,color:"#006699"}}>{numberConfig["planWeekCount"]}</Text>
+                                                    <Text style={styles.menu_child_icon_text}>本周计划</Text>
+                                                </View>
+                                            </TouchableOpacity>
+                                        </View>
+                                    </View>
+                                    <View style={styles.flexBoxCol}>
+                                        <View style={styles.flexBoxColChild}>
+                                            <TouchableOpacity onPress={() => this.authority('procurementOrderWeek') }>
+                                                <View style={styles.menu_child}>
+                                                    <Text style={styles.menu_child_icon}>{numberConfig["orderWeekCount"]}</Text>
+                                                    <Text style={styles.menu_child_icon_text}>本周订单</Text>
+                                                </View>
+                                            </TouchableOpacity>
+                                        </View>
+                                    </View>
+                                    <View style={styles.flexBoxCol}>
+                                        <View style={styles.flexBoxColChild}>
+                                            <TouchableOpacity onPress={() => this.authority('deferred') }>
+                                                <View style={styles.menu_child}>
+                                                    <Text style={{...styles.menu_child_icon,color:"#330066"}}>{numberConfig["extensionAllCount"]}</Text>
+                                                    <Text style={styles.menu_child_icon_text}>交货延期订单</Text>
+                                                </View>
+                                            </TouchableOpacity> 
+                                        </View>
+                                    </View>
+                                </View>
+                                <View style={styles.flexBox}>
+                                    <View style={styles.flexBoxCol}>
+                                        <View style={styles.flexBoxColChild}>
+                                            <TouchableOpacity onPress={() => this.authority('procurementPlanMonth') }>
+                                                <View style={styles.menu_child}>
+                                                    <Text style={{...styles.menu_child_icon,color:"#006600"}}>{numberConfig["planMonthCount"]}</Text>
+                                                    <Text style={styles.menu_child_icon_text}>本月计划</Text>
+                                                </View>
+                                            </TouchableOpacity>
+                                        </View>
+                                    </View>
+                                    <View style={styles.flexBoxCol}>
+                                        <View style={styles.flexBoxColChild}>
+                                            <TouchableOpacity onPress={() => this.authority('procurementOrderMonth') }>
+                                                <View style={styles.menu_child}>
+                                                    <Text style={{...styles.menu_child_icon,color:"#00CCFF"}}>{numberConfig["orderMonthCount"]}</Text>
+                                                    <Text style={styles.menu_child_icon_text}>本月订单</Text>
+                                                </View>
+                                            </TouchableOpacity> 
+                                        </View>
+                                    </View>
+
+                                    { isProcurement ?
+                                        <View style={styles.flexBoxCol}>
+                                            <View style={styles.flexBoxColChild}>
+                                                <TouchableOpacity onPress={() => this.authority('takeDelivery') }>
+                                                    <View style={styles.menu_child}>
+                                                        <Text style={{...styles.menu_child_icon,color:"#660000"}}>{numberConfig["receivedCount"]||0}</Text>
+                                                        <Text style={styles.menu_child_icon_text}>待收货订单</Text>
+                                                    </View>
+                                                </TouchableOpacity> 
+                                            </View>
+                                        </View>       
+                                        :
+                                        <View style={styles.flexBoxCol}></View>
+                                    }
+
+                                </View>                        
+                                <View style={styles.flexBox}>
+                                    { isProcurement ?
+                                        <View style={styles.flexBoxCol}>
+                                            <View style={styles.flexBoxColChild}>
+                                                <TouchableOpacity onPress={() => this.authority('waitClose') }>
+                                                    <View style={styles.menu_child}>
+                                                        <Text style={{...styles.menu_child_icon,color:"#006699"}}>{numberConfig["billSourceDraft"]}</Text>
+                                                        <Text style={styles.menu_child_icon_text}>待下发结算源</Text>
+                                                    </View>
+                                                </TouchableOpacity>
+                                            </View>
+                                        </View>                            
+                                        :
+                                        <View style={styles.flexBoxCol}></View>
+                                    }
+                                    { isProcurement ?
+                                        <View style={styles.flexBoxCol}>
+                                            <View style={styles.flexBoxColChild}>
+                                                <TouchableOpacity onPress={() => this.authority('waitCloseCheck') }>
+                                                    <View style={styles.menu_child}>
+                                                        <Text style={styles.menu_child_icon}>{numberConfig["billAuditDraft"]}</Text>
+                                                        <Text style={styles.menu_child_icon_text}>待审核结算单</Text>
+                                                    </View>
+                                                </TouchableOpacity>
+                                            </View>
+                                        </View>                            
+                                        :
+                                        <View style={styles.flexBoxCol}></View>
+                                    }                            
+                                    <View style={styles.flexBoxCol}></View>
+                                </View>                    
+                            </View>   
+                        }
+                    </Card.Body>
+                </Card>
+
+                <Card style={styles.card}>
+                    <Card.Header
+                    title="常用"
+                    thumb={<Icon name="audit" size="md" color="#009966" style={{marginRight:6}} />}
+                    />
+                    <Card.Body>
+                        <View style={styles.cardContent}>
+                            { isFinancing ?
+                                <View style={styles.flexBox}>
                                     <View style={styles.flexBoxCol}>
                                         <View style={styles.flexBoxColChild}>
                                             <TouchableOpacity onPress={() => this.authority('settleAccounts') }>
@@ -416,37 +396,84 @@ class HomeScreen extends Component{
                                                 </View>
                                             </TouchableOpacity>
                                         </View>
-                                    </View>                                     
-                                }
+                                    </View>  
 
-                            </View>
-                        }
-                        { isProcurement ?
-                            <View style={styles.flexBox}>
-                                <View style={styles.flexBoxCol}>
-                                    <View style={styles.flexBoxColChild}>
-                                        <TouchableOpacity onPress={() => this.authority('settleAccounts') }>
-                                            <View style={styles.menu_child}>
-                                                <Icon style={styles.menu_child_icon} name="calculator" size="lg" color="#660000" />
-                                                <Text style={styles.menu_child_text}>结算单</Text>
-                                            </View>
-                                        </TouchableOpacity>
+                                    <View style={styles.flexBoxCol}></View> 
+                                    <View style={styles.flexBoxCol}></View>                          
+                                </View>
+                                :
+                                <View style={styles.flexBox}>
+                                    <View style={styles.flexBoxCol}>
+                                        <View style={styles.flexBoxColChild}>
+                                            <TouchableOpacity onPress={() => this.authority('procurementPlan') }>
+                                                <View style={styles.menu_child}>
+                                                    <Icon style={styles.menu_child_icon} name="flag" size="lg" color="#ff9933" />
+                                                    <Text style={styles.menu_child_text}>采购计划</Text>
+                                                </View>
+                                            </TouchableOpacity>
+                                        </View>
                                     </View>
-                                </View>  
+                                    <View style={styles.flexBoxCol}>
+                                        <View style={styles.flexBoxColChild}>
+                                            <TouchableOpacity onPress={() => this.authority('procurementOrder') }>
+                                                <View style={styles.menu_child}>
+                                                    <Icon style={styles.menu_child_icon} name="file-done" size="lg" color="#009966" />
+                                                    <Text style={styles.menu_child_text}>采购订单</Text>
+                                                </View>
+                                            </TouchableOpacity>
+                                        </View>
+                                    </View>
 
-                                <View style={styles.flexBoxCol}></View> 
-                                <View style={styles.flexBoxCol}></View>                          
-                            </View>
-                            :
-                            <View></View>
-                        }
-                    </View>         
-                </Card.Body>
-            </Card>
+                                    { isProcurement ?
+                                        <View style={styles.flexBoxCol}>
+                                            <View style={styles.flexBoxColChild}>
+                                                <TouchableOpacity onPress={() => this.authority('salesReturn') }>
+                                                    <View style={styles.menu_child}>
+                                                        <Icon style={styles.menu_child_icon} name="export" size="lg" color="#00CCFF" />
+                                                        <Text style={styles.menu_child_text}>收货</Text>
+                                                    </View>
+                                                </TouchableOpacity>  
+                                            </View>
+                                        </View>
+                                        :
+                                        <View style={styles.flexBoxCol}>
+                                            <View style={styles.flexBoxColChild}>
+                                                <TouchableOpacity onPress={() => this.authority('settleAccounts') }>
+                                                    <View style={styles.menu_child}>
+                                                        <Icon style={styles.menu_child_icon} name="calculator" size="lg" color="#660000" />
+                                                        <Text style={styles.menu_child_text}>结算单</Text>
+                                                    </View>
+                                                </TouchableOpacity>
+                                            </View>
+                                        </View>                                     
+                                    }
 
+                                </View>
+                            }
+                            { isProcurement ?
+                                <View style={styles.flexBox}>
+                                    <View style={styles.flexBoxCol}>
+                                        <View style={styles.flexBoxColChild}>
+                                            <TouchableOpacity onPress={() => this.authority('settleAccounts') }>
+                                                <View style={styles.menu_child}>
+                                                    <Icon style={styles.menu_child_icon} name="calculator" size="lg" color="#660000" />
+                                                    <Text style={styles.menu_child_text}>结算单</Text>
+                                                </View>
+                                            </TouchableOpacity>
+                                        </View>
+                                    </View>  
 
+                                    <View style={styles.flexBoxCol}></View> 
+                                    <View style={styles.flexBoxCol}></View>                          
+                                </View>
+                                :
+                                <View></View>
+                            }
+                        </View>         
+                    </Card.Body>
+                </Card>
 
-            <View style={styles.footer}><Text>——到底了——</Text></View>
+                <View style={styles.footer}><Text>——到底了——</Text></View>
             </WingBlank>
         </ScrollView>
         );
