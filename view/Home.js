@@ -239,10 +239,10 @@ class HomeScreen extends Component{
                                 </View>  
                                 <View style={styles.flexBoxCol}>
                                     <View style={styles.flexBoxColChild}>
-                                        <TouchableOpacity onPress={() => this.authority('returnMaterial') }>
+                                        <TouchableOpacity onPress={() => this.authority('getMaterial') }>
                                             <View style={styles.menu_child}>
                                                 <Icon style={styles.menu_child_icon} name="calculator" size="lg" color="#660000" />
-                                                <Text style={styles.menu_child_text}>退料</Text>
+                                                <Text style={styles.menu_child_text}>叫料</Text>
                                             </View>
                                         </TouchableOpacity>
                                     </View>

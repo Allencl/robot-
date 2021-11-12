@@ -21,7 +21,7 @@ import returnMaterialScreen from './view_page/returnMaterial/index';     // 退�
 import trunkScreen from './view_page/trunk/index';     // 生产尾箱操作
 import vibrationScreen from './view_page/vibration/index';     // 振动盘退料
 import vibrationDetailsScreen from './view_page/vibration/details.js';     // 振动盘退料 详情
-
+import getMaterialScreen from './view_page/getMaterial/index';     // 叫料
 
 
 
@@ -262,10 +262,16 @@ class App extends Component {
                 </Tab.Navigator>
               )}            
             </Stack.Screen>               
-                    
+            <Stack.Screen name="getMaterial" options={{title:'叫料',...headOption}}>
+              {(TabProps) => (
+                <Tab.Navigator tabBar={() => <BarBottom TabProps={TabProps} /> }>
+                  <Tab.Screen initialParams={{routeParams: TabProps.route.params}} name="getMaterial" component={getMaterialScreen} />
+                </Tab.Navigator>
+              )}            
+            </Stack.Screen>                     
 
             
-
+            
 
 
 
