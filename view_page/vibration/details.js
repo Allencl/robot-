@@ -12,7 +12,7 @@ import {WisCameraComponent,WisTableCross} from '@wis_component/ul';
 import {WisFormText} from '@wis_component/form';   // form 
 
 
-// 上料 主页
+// 振动盘退料 退料 
 class PageForm extends Component {
 
   constructor(props) {
@@ -23,6 +23,11 @@ class PageForm extends Component {
       // serchValue:"IVC-2012210004", // 查询框
       serchValue:"", // 查询框
 
+
+      library:"线边库",    // 线边库
+      material:"物料",    // 物料
+      surplus:"22",    // 剩余数量
+      no:"料箱号",   //料箱号
       code:"点位",   // 点位
       number:'11',  // 数量
     }
@@ -65,7 +70,7 @@ class PageForm extends Component {
       }
     },(result) => {
 
-      var data=result["data"];
+      // var data=result["data"];
 
       // that.setState({
       //   // code:data["id"],  // 点位 
@@ -112,7 +117,7 @@ class PageForm extends Component {
   }  
 
   /**
-   * 上料
+   * 退料
    */
   passHandle=(value)=>{
     const {navigation} = this.props;
@@ -147,7 +152,7 @@ class PageForm extends Component {
   render() {
     let that=this;
     let {serchValue,visible,dataList} = this.state;
-    let {code,number}=this.state;
+    let {code,number,library,material,surplus,no}=this.state;
     let {navigation} = this.props;
     const {getFieldProps, getFieldError, isFieldValidating} = this.props.form;
 
@@ -194,15 +199,37 @@ class PageForm extends Component {
 
         <View style={{marginTop:22}}>
           <WisInput  
-            {...getFieldProps('code',{
-              rules:[{required:false }],
-              initialValue:code
-            })} 
-            error={getFieldError('code')}               
-            lableName="点位"
+            value={library}             
+            lableName="线边库"
             disabled
-          />
+            extra={<Icon name="stop" />}
+          />        
+          <WisInput  
+            value={material}             
+            lableName="物料"
+            disabled
+            extra={<Icon name="stop" />}
+          />          
+        
+          <WisInput  
+            value={no}             
+            lableName="料箱号"
+            disabled
+            extra={<Icon name="stop" />}
+          /> 
+          <WisInput  
+            value={code}             
+            lableName="目标点位"
+            disabled
+            extra={<Icon name="stop" />}
+          />  
 
+          <WisInput  
+            value={surplus}             
+            lableName="剩余数量"
+            disabled
+            extra={<Icon name="stop" />}
+          />   
           <WisInput  
             type="number"
             {...getFieldProps('number',{
@@ -210,14 +237,14 @@ class PageForm extends Component {
               initialValue:number
             })} 
             error={getFieldError('number')}               
-            lableName="数量"
+            lableName="实际数量"
           />    
 
 
         </View>
 
         <View style={{marginTop:32}}>
-          <Button type="primary" onPress={this.passHandle}>上料</Button>
+          <Button type="primary" onPress={this.passHandle}>退料</Button>
         </View>      
                 
       </ScrollView>

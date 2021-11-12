@@ -17,6 +17,21 @@ import LoginScreen from './view/Login';   // 登录
 
 
 import onlineScreen from './view_page/online/index';     // 上料
+import returnMaterialScreen from './view_page/returnMaterial/index';     // 退料
+import trunkScreen from './view_page/trunk/index';     // 生产尾箱操作
+import vibrationScreen from './view_page/vibration/index';     // 振动盘退料
+import vibrationDetailsScreen from './view_page/vibration/details.js';     // 振动盘退料 详情
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -219,9 +234,68 @@ class App extends Component {
                 </Tab.Navigator>
               )}            
             </Stack.Screen>
-
+            <Stack.Screen name="returnMaterial" options={{title:'退料',...headOption}}>
+              {(TabProps) => (
+                <Tab.Navigator tabBar={() => <BarBottom TabProps={TabProps} /> }>
+                  <Tab.Screen initialParams={{routeParams: TabProps.route.params}} name="returnMaterial" component={returnMaterialScreen} />
+                </Tab.Navigator>
+              )}            
+            </Stack.Screen>
+            <Stack.Screen name="trunk" options={{title:'生产尾箱操作',...headOption}}>
+              {(TabProps) => (
+                <Tab.Navigator tabBar={() => <BarBottom TabProps={TabProps} /> }>
+                  <Tab.Screen initialParams={{routeParams: TabProps.route.params}} name="trunk" component={trunkScreen} />
+                </Tab.Navigator>
+              )}            
+            </Stack.Screen>
+            <Stack.Screen name="vibration" options={{title:'振动盘退料',...headOption}}>
+              {(TabProps) => (
+                <Tab.Navigator tabBar={() => <BarBottom TabProps={TabProps} /> }>
+                  <Tab.Screen initialParams={{routeParams: TabProps.route.params}} name="vibration" component={vibrationScreen} />
+                </Tab.Navigator>
+              )}            
+            </Stack.Screen>            
+            <Stack.Screen name="vibrationDetails" options={{title:'振动盘退料-详情',...headOption}}>
+              {(TabProps) => (
+                <Tab.Navigator tabBar={() => <BarBottom TabProps={TabProps} /> }>
+                  <Tab.Screen initialParams={{routeParams: TabProps.route.params}} name="vibrationDetails" component={vibrationDetailsScreen} />
+                </Tab.Navigator>
+              )}            
+            </Stack.Screen>               
+                    
 
             
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

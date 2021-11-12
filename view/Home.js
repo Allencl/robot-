@@ -205,15 +205,64 @@ class HomeScreen extends Component{
                                         </TouchableOpacity>
                                     </View>
                                 </View>  
-
-                                <View style={styles.flexBoxCol}></View> 
-                                <View style={styles.flexBoxCol}></View>                          
+                                <View style={styles.flexBoxCol}>
+                                    <View style={styles.flexBoxColChild}>
+                                        <TouchableOpacity onPress={() => this.authority('returnMaterial') }>
+                                            <View style={styles.menu_child}>
+                                                <Icon style={styles.menu_child_icon} name="calculator" size="lg" color="#660000" />
+                                                <Text style={styles.menu_child_text}>退料</Text>
+                                            </View>
+                                        </TouchableOpacity>
+                                    </View>
+                                </View> 
+                                <View style={styles.flexBoxCol}>
+                                    <View style={styles.flexBoxColChild}>
+                                        <TouchableOpacity onPress={() => this.authority('trunk') }>
+                                            <View style={styles.menu_child}>
+                                                <Icon style={styles.menu_child_icon} name="calculator" size="lg" color="#660000" />
+                                                <Text style={styles.menu_child_text}>生产尾箱操作</Text>
+                                            </View>
+                                        </TouchableOpacity>
+                                    </View>
+                                </View>                                                         
                             </View>
+                            <View style={styles.flexBox}>
+                                <View style={styles.flexBoxCol}>
+                                    <View style={styles.flexBoxColChild}>
+                                        <TouchableOpacity onPress={() => this.authority('vibration') }>
+                                            <View style={styles.menu_child}>
+                                                <Icon style={styles.menu_child_icon} name="calculator" size="lg" color="#660000" />
+                                                <Text style={styles.menu_child_text}>振动盘退料</Text>
+                                            </View>
+                                        </TouchableOpacity>
+                                    </View>
+                                </View>  
+                                <View style={styles.flexBoxCol}>
+                                    <View style={styles.flexBoxColChild}>
+                                        <TouchableOpacity onPress={() => this.authority('returnMaterial') }>
+                                            <View style={styles.menu_child}>
+                                                <Icon style={styles.menu_child_icon} name="calculator" size="lg" color="#660000" />
+                                                <Text style={styles.menu_child_text}>退料</Text>
+                                            </View>
+                                        </TouchableOpacity>
+                                    </View>
+                                </View> 
+                                <View style={styles.flexBoxCol}>
+                                    <View style={styles.flexBoxColChild}>
+                                        <TouchableOpacity onPress={() => this.authority('trunk') }>
+                                            <View style={styles.menu_child}>
+                                                <Icon style={styles.menu_child_icon} name="calculator" size="lg" color="#660000" />
+                                                <Text style={styles.menu_child_text}>生产尾箱操作</Text>
+                                            </View>
+                                        </TouchableOpacity>
+                                    </View>
+                                </View>                                                         
+                            </View>                            
                         </View>         
                     </Card.Body>
                 </Card>
 
-
+                
 
                 <Card style={styles.card}>
                     <Card.Header

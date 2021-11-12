@@ -101,7 +101,7 @@ class TableComponent extends Component {
    */
   checkBoxChange(item,index){
     let{data}=this.state;
-    let{single=false}=this.props;
+    let{single=false,onCheckChange}=this.props;
     let newData=JSON.parse(JSON.stringify(data));
 
     // 单选
@@ -113,6 +113,8 @@ class TableComponent extends Component {
     this.setState({
       data: newData
     });
+
+    onCheckChange && onCheckChange(newData.filter(o=>o['_checked']));
   }
 
   /**
@@ -194,7 +196,7 @@ class TableComponent extends Component {
 
   render() {
     const {serchValue,modalToggle, data=[]}=this.state;
-    const {placeholder,onSerchHandle,height,searchHTML, maxHeight, currentPage, totalPage, onChangePage, onRefresh}=this.props;
+    const {pageBox=true,placeholder,onSerchHandle,height,searchHTML, maxHeight, currentPage, totalPage, onChangePage, onRefresh}=this.props;
 
     return (
       <View style={styles.container}>
@@ -246,9 +248,8 @@ class TableComponent extends Component {
             :
             <View></View>
           }
-
-
-          <View style={styles.footerContainer}>
+          { pageBox ?
+            <View style={styles.footerContainer}>
               <View style={{...styles.footerContainerConfig,paddingTop:6}}>
                 {/* <Text style={{paddingLeft:12}}>共</Text>
                 <Text numberOfLines={1} style={{paddingLeft:6,paddingRight:6,maxWidth:80,textAlign:'center'}}>1200</Text>
@@ -299,7 +300,10 @@ class TableComponent extends Component {
 
                 }
               </View>
-          </View>
+            </View>
+            :
+            <View></View>
+          }
         </View>
 
         <ScrollView style={{height:height|| (Dimensions.get('window').height-(onSerchHandle?260:200)) }}>       
@@ -362,7 +366,7 @@ const styles = StyleSheet.create({
   checkbox:{
     // fontSize:22
 
-    // checkColor:"red"
+    // backgroundColor:"#e8eaec"
   },
   contentContainer:{
     // flexDirection: "row",
@@ -412,8 +416,8 @@ const styles = StyleSheet.create({
   footerContainer:{
     flexDirection: "row",
     justifyContent:'space-between',
-    marginTop:12,
-    marginBottom:16,
+    // marginTop:12,
+    // marginBottom:16,
     // backgroundColor:"red"
   },
   footerContainerConfig:{

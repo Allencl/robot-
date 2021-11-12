@@ -12,7 +12,7 @@ import {WisCameraComponent,WisTableCross} from '@wis_component/ul';
 import {WisFormText} from '@wis_component/form';   // form 
 
 
-// 上料 主页
+// 退料 主页
 class PageForm extends Component {
 
   constructor(props) {
@@ -23,8 +23,13 @@ class PageForm extends Component {
       // serchValue:"IVC-2012210004", // 查询框
       serchValue:"", // 查询框
 
-      code:"点位",   // 点位
-      number:'11',  // 数量
+      material:'物料',
+      code:'物料条码',
+      location:'线边库/点位',
+      number:'数量',
+      no:'计划单号',
+      order:'工单号',
+      time:'新增时间'
     }
   }
 
@@ -43,8 +48,7 @@ class PageForm extends Component {
 
     // 清空
     this.setState({
-      code:"",   // 点位
-      number:1,  // 数量
+
     });
   }
 
@@ -68,7 +72,7 @@ class PageForm extends Component {
       var data=result["data"];
 
       // that.setState({
-      //   // code:data["id"],  // 点位 
+
       // });
 
     });
@@ -124,21 +128,12 @@ class PageForm extends Component {
       return;
     }
 
-    this.props.form.validateFields((error, value) => {
-      // 表单 不完整
-      if(error){
-        Toast.fail('必填字段未填！');
-      } else{
-        Toast.success("操作成功！");
 
-        
+    Toast.success("操作成功！");
+    setTimeout(() => {
+      navigation.navigate('Home');
+    },1000);
 
-        setTimeout(() => {
-          navigation.navigate('Home');
-        },1000);
-
-      }
-  });
   }  
 
 
@@ -147,7 +142,7 @@ class PageForm extends Component {
   render() {
     let that=this;
     let {serchValue,visible,dataList} = this.state;
-    let {code,number}=this.state;
+    let {material,code,location,number,no,order,time}=this.state;
     let {navigation} = this.props;
     const {getFieldProps, getFieldError, isFieldValidating} = this.props.form;
 
@@ -191,33 +186,45 @@ class PageForm extends Component {
           </TouchableOpacity>
         </View>
 
+        <View style={{marginTop:12}}>    
+            <WisFormText 
+              title="退料详情"
+              children={[
+                {
+                  label:"物料",
+                  content:material
+                },
+                {
+                  label:"物料条码",
+                  content:code
+                },
+                {
+                  label:"线边库/点位",
+                  content:location
+                },
+                {
+                  label:"数量",
+                  content:number
+                },
+                {
+                  label:"计划单号",
+                  content:no
+                },
+                {
+                  label:"工单号",
+                  content:order
+                },
+                {
+                  label:"新增时间",
+                  content:time
+                }                                                                
+              ]}
+            />
+          </View> 
 
-        <View style={{marginTop:22}}>
-          <WisInput  
-            {...getFieldProps('code',{
-              rules:[{required:false }],
-              initialValue:code
-            })} 
-            error={getFieldError('code')}               
-            lableName="点位"
-            disabled
-          />
-
-          <WisInput  
-            type="number"
-            {...getFieldProps('number',{
-              rules:[{required:true}],
-              initialValue:number
-            })} 
-            error={getFieldError('number')}               
-            lableName="数量"
-          />    
-
-
-        </View>
 
         <View style={{marginTop:32}}>
-          <Button type="primary" onPress={this.passHandle}>上料</Button>
+          <Button type="primary" onPress={this.passHandle}>退料</Button>
         </View>      
                 
       </ScrollView>
