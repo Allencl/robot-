@@ -137,12 +137,12 @@ class PageForm extends Component {
         </View>  
 
         <View style={{marginTop:12}}>    
-          <WisTableCross
+          {/* <WisTableCross
             ref="tableRef"  
             height={300}   
             columns={columns} // columns 配置列  
             data={[]}
-          />
+          /> */}
         </View> 
 
 
